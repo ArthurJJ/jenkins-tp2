@@ -57,6 +57,7 @@ pipeline {
 
         stage('Qualité') {
             parallel {
+                failFast true
                 stage('Lint') {
                     steps {
                         echo 'Analyse statique...'
@@ -72,7 +73,7 @@ pipeline {
                 stage('Sécurité') {
                     steps {
                         echo 'Scan de dépendances...'
-                        sh 'sleep 5; exit 1'
+                        sh 'sleep 5'
                     }
                 }
             }
